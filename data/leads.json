@@ -1,0 +1,101 @@
+[
+  {
+    "id": "LEAD-2026-004-7336",
+    "name": "DANIEL ASTUDILLO",
+    "phone": "0994773533",
+    "city": "Puyo",
+    "email": "FRANZASTUDILLO@GMAIL.COM",
+    "score": 10,
+    "maxScore": 50,
+    "segment": "Aspirante al Curso / Licencia CBR",
+    "rank": "Iniciado en Bienes Raíces",
+    "status": "nuevo",
+    "answers": [
+      {
+        "questionIndex": 1,
+        "question": "1. ¿En qué año se promulgó la Ley de Corredores de Bienes Raíces en el Ecuador que regula oficialmente nuestra profesión?",
+        "selectedText": "B) En 2015 con el COGEP",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 2,
+        "question": "2. Según la normativa ecuatoriana, ¿por qué es indispensable contar con la Licencia Profesional (CBR) para intermediar bienes raíces?",
+        "selectedText": "A) Es solo un requisito opcional para cobrar más comisión",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 3,
+        "question": "3. ¿Cuál es el rol de la UAFE respecto a los Corredores de Bienes Raíces e Inmobiliarias en el Ecuador?",
+        "selectedText": "C) Cobrar impuestos prediales anuales",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 4,
+        "question": "4. ¿Qué ventaja competitiva ofrece el programa de formación de ACBR Pastaza para quienes desean obtener su Licencia Profesional en Ecuador?",
+        "selectedText": "A) Modalidad 100% virtual accesible desde cualquier provincia del país con aval gremial oficial",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 5,
+        "question": "5. Además del respaldo gremial oficial en Ecuador, ¿qué beneficio obtienen los miembros de ACBR Pastaza a nivel global?",
+        "selectedText": "C) Descuentos únicamente en pasajes de autobús",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 6,
+        "question": "6. Para personalizar tu diagnóstico final: ¿Cuál es tu interés principal en el sector inmobiliario hoy?",
+        "selectedText": "🎓 Quiero obtener mi Licencia Profesional de Corredor con ACBR Pastaza",
+        "isCorrect": false
+      }
+    ],
+    "createdAt": "2026-10-16T16:45:37.336Z",
+    "whatsappSent": true,
+    "notes": "Prospecto capturado automáticamente desde el Reto Inmobiliario ACBR Pastaza."
+  },
+  {
+    "id": "LEAD-2026-003-1638",
+    "name": "Esteban Villacís",
+    "phone": "0991234567",
+    "city": "Puyo",
+    "email": "esteban@ejemplo.com",
+    "score": 50,
+    "maxScore": 50,
+    "segment": "Aspirante al Curso / Licencia CBR",
+    "rank": "Corredor Inmobiliario de Élite",
+    "status": "nuevo",
+    "answers": [],
+    "createdAt": "2026-10-16T16:29:31.638Z",
+    "whatsappSent": false,
+    "notes": "Prospecto capturado automáticamente desde el Reto Inmobiliario ACBR Pastaza."
+  },
+  {
+    "id": "LEAD-2026-001",
+    "name": "Carlos Mendoza Ramos",
+    "phone": "0998123456",
+    "city": "Puyo",
+    "email": "carlos.mendoza@gmail.com",
+    "score": 50,
+    "maxScore": 50,
+    "segment": "Aspirante al Curso / Licencia CBR",
+    "rank": "Corredor Inmobiliario de Élite",
+    "status": "contactado",
+    "createdAt": "2026-10-16T11:29:13.208Z",
+    "whatsappSent": true,
+    "notes": "Interesado en matricularse en la próxima cohorte 100% online."
+  },
+  {
+    "id": "LEAD-2026-002",
+    "name": "Verónica Santillán",
+    "phone": "0987654321",
+    "city": "Ambato",
+    "email": "veronica.santi@yahoo.es",
+    "score": 40,
+    "maxScore": 50,
+    "segment": "Corredor / Capacitación Continua",
+    "rank": "Profesional Inmobiliario Senior",
+    "status": "nuevo",
+    "createdAt": "2026-10-16T14:29:13.208Z",
+    "whatsappSent": false,
+    "notes": "Requiere actualización en normativa UAFE y avalúos comerciales."
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "ACBR Pastaza • Reto Inmobiliario Ecuador",
+  "description": "Herramienta digital interactiva de diagnóstico, captura y gestión automatizada de prospectos inmobiliarios para ACBR Pastaza con envío a WhatsApp y CRM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
