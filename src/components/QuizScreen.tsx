@@ -62,7 +62,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ questions, onComplete })
           Pregunta {currentIdx + 1} de {questions.length}
         </span>
         <span className="bg-[#112a46] px-3 py-1 rounded-full text-[#38bdf8] font-black border border-sky-500/30">
-          Puntaje: {score} / 50 pts
+          Puntaje: {score} / {questions.length * 10} pts
         </span>
       </div>
 

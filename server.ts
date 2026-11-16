@@ -65,7 +65,7 @@ export interface AppConfig {
   associationName: string;
   institutionSubtitle: string;
   leadMagnetTitle: string;
-  scholarshipDiscount: string; // e.g. "30% DE BECA"
+  scholarshipDiscount: string; // e.g. "Beca según resultados obtenidos"
   websiteUrl: string;
   websiteDomain: string;
 }
@@ -74,8 +74,8 @@ const DEFAULT_CONFIG: AppConfig = {
   whatsappDestination: '593967349504',
   associationName: 'ACBR Pastaza',
   institutionSubtitle: 'Tu Sede INMOBILIARIA',
-  leadMagnetTitle: 'Guía Oficial de Profesionalización Inmobiliaria Ecuador + Beca ACBR Pastaza',
-  scholarshipDiscount: '30% DE BECA',
+  leadMagnetTitle: 'Certificado Oficial de Conocimiento + Beca según resultados obtenidos',
+  scholarshipDiscount: 'Beca según resultados obtenidos',
   websiteUrl: 'https://acbirpastaza.com',
   websiteDomain: 'acbirpastaza.com',
 };
@@ -184,7 +184,7 @@ app.post('/api/config', (req, res) => {
 // 3. Capture Lead (Automatic submission)
 app.post('/api/leads', (req, res) => {
   try {
-    const { name, phone, city, email, score, maxScore = 50, segment, answers, whatsappSent } = req.body;
+    const { name, phone, city, email, score, maxScore = 100, segment, answers, whatsappSent } = req.body;
 
     if (!name || !phone || !city) {
       res.status(400).json({ error: 'Faltan campos obligatorios (nombre, celular y ciudad).' });
@@ -192,12 +192,13 @@ app.post('/api/leads', (req, res) => {
     }
 
     const leads = readLeads();
+    const numericScore = Number(score) || 0;
     const rank =
-      score >= 50
+      numericScore >= 90
         ? 'Corredor Inmobiliario de Élite'
-        : score >= 40
+        : numericScore >= 70
         ? 'Profesional Inmobiliario Senior'
-        : score >= 30
+        : numericScore >= 50
         ? 'Agente Inmobiliario Promesa'
         : 'Iniciado en Bienes Raíces';
 
@@ -207,8 +208,8 @@ app.post('/api/leads', (req, res) => {
       phone: String(phone).trim(),
       city: String(city).trim(),
       email: email ? String(email).trim() : undefined,
-      score: Number(score) || 0,
-      maxScore: Number(maxScore) || 50,
+      score: numericScore,
+      maxScore: Number(maxScore) || 100,
       segment: segment || 'General',
       rank,
       status: 'nuevo',
@@ -322,7 +323,7 @@ Tu misión es brindar respuestas rigurosas, claras, precisas y fundamentadas en 
 3. Formación y Licencia Profesional CBR con ACBR Pastaza: Modalidad 100% virtual para todo el Ecuador, docentes expertos, redes internacionales (NAR).
 4. Seguridad jurídica para propietarios y compradores: Promesa de compraventa, escrituras, levantamiento de gravámenes, plusvalía y alcabalas en municipios de Ecuador.
 
-Personaliza el tono para dirigirte amablemente a ${userName || 'Colega'} de ${userCity || 'Ecuador'}, quien obtuvo ${userScore !== undefined ? userScore : 'un puntaje'} sobre 50 en el Reto Inmobiliario y tiene el perfil de "${userSegment || 'Interesado en Bienes Raíces'}".
+Personaliza el tono para dirigirte amablemente a ${userName || 'Colega'} de ${userCity || 'Ecuador'}, quien obtuvo ${userScore !== undefined ? userScore : 'un puntaje'} sobre 100 en el Reto Inmobiliario y tiene el perfil de "${userSegment || 'Interesado en Bienes Raíces'}".
 Sé profesional, alentador y brinda consejos accionables.`;
 
     let responseText = '';

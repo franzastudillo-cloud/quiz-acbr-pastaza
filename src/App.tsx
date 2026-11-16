@@ -14,8 +14,8 @@ const DEFAULT_CONFIG: AppConfig = {
   whatsappDestination: '593967349504',
   associationName: 'ACBR Pastaza',
   institutionSubtitle: 'Tu Sede INMOBILIARIA',
-  leadMagnetTitle: 'Guía de Profesionalización Inmobiliaria en Ecuador + Beca Gremial',
-  scholarshipDiscount: '30% DE BECA',
+  leadMagnetTitle: 'Certificado Oficial de Conocimiento + Beca según resultados obtenidos',
+  scholarshipDiscount: 'Beca según resultados obtenidos',
   websiteUrl: 'https://acbirpastaza.com',
   websiteDomain: 'acbirpastaza.com',
 };
@@ -138,7 +138,7 @@ export default function App() {
             {currentStep === 'capture' && (
               <LeadCaptureScreen
                 score={score}
-                maxScore={50}
+                maxScore={QUIZ_QUESTIONS.length * 10}
                 segment={segment}
                 answers={answers}
                 config={config}

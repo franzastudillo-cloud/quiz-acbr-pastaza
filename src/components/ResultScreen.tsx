@@ -5,10 +5,8 @@ import {
   Check,
   Award,
   BookOpen,
-  ArrowRight,
   ExternalLink,
   ShieldCheck,
-  Sparkles,
   RotateCcw,
   Clock,
 } from 'lucide-react';
@@ -33,23 +31,27 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
   const [countdown, setCountdown] = useState<number | null>(5);
   const [autoRedirectStopped, setAutoRedirectStopped] = useState(false);
 
-  // Format WhatsApp message
+  const correctCount = Math.round(lead.score / 10);
+  const totalQuestions = Math.round(lead.maxScore / 10);
+
+  // Format WhatsApp message sending complete data and results to ACBR Pastaza
   const generateWhatsAppUrl = () => {
     const rawDest = config.whatsappDestination || '593967349504';
     const cleanDest = rawDest.replace(/\D/g, '');
 
     const message = `¡Hola *${config.associationName || 'ACBR Pastaza'}*! 🏠 (Tu Sede Inmobiliaria)
-Acabo de completar el *Reto Inmobiliario Oficial de Ecuador*.
+Acabo de completar el *Reto Inmobiliario Oficial* y recibí mi Certificado Digital.
 
 👤 *Nombre:* ${lead.name}
 📍 *Ciudad:* ${lead.city}
 📱 *WhatsApp:* ${lead.phone}${lead.email ? `\n✉️ *Email:* ${lead.email}` : ''}
-🏆 *Puntaje:* ${lead.score}/${lead.maxScore} pts (${lead.rank})
+🏆 *Resultado obtenido:* ${lead.score}/${lead.maxScore} pts (${correctCount}/${totalQuestions} aciertos)
+🎖️ *Nivel:* ${lead.rank}
 🎯 *Mi interés:* ${lead.segment}
-🆔 *Código de Registro:* ${lead.id}
+🆔 *Código de Certificado:* ${lead.id}
 🌐 *Portal Oficial:* https://acbirpastaza.com
 
-Solicito mi diagnóstico oficial y la información del beneficio gremial (${config.scholarshipDiscount}). ¡Muchas gracias!`;
+Deseo conversar con un asesor para conocer la beca o descuento asignado según mi resultado obtenido. ¡Muchas gracias!`;
 
     return `https://wa.me/${cleanDest}?text=${encodeURIComponent(message)}`;
   };
@@ -63,15 +65,13 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
   };
 
   const handleCopyMessage = () => {
-    const rawDest = config.whatsappDestination || '593967349504';
-    const cleanDest = rawDest.replace(/\D/g, '');
-    const message = `¡Hola ACBR Pastaza! 🏠 Acabo de completar el Reto Inmobiliario: Nombre: ${lead.name}, Ciudad: ${lead.city}, Tel: ${lead.phone}, Puntaje: ${lead.score}/${lead.maxScore} pts (${lead.rank}), Interés: ${lead.segment}, ID: ${lead.id}. Deseo reclamar mi beneficio.`;
+    const message = `¡Hola ACBR Pastaza! 🏠 Acabo de completar el Reto Inmobiliario: Nombre: ${lead.name}, Ciudad: ${lead.city}, Tel: ${lead.phone}, Resultado: ${lead.score}/${lead.maxScore} pts (${correctCount}/${totalQuestions} aciertos - ${lead.rank}), Interés: ${lead.segment}, Código: ${lead.id}. Deseo conocer la beca o descuento asignado según mi resultado.`;
     navigator.clipboard.writeText(message);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
 
-  // Optional auto-redirect timer
+  // Auto-open WhatsApp after 5s unless cancelled
   useEffect(() => {
     if (countdown === null || autoRedirectStopped) return;
 
@@ -81,7 +81,6 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
       }, 1000);
       return () => clearTimeout(timer);
     } else if (countdown === 0) {
-      // Trigger redirect
       window.open(whatsAppUrl, '_blank');
       setCountdown(null);
     }
@@ -98,7 +97,7 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/40">
-                REGISTRO EXITOSO EN ACBR PASTAZA
+                CERTIFICADO ENTREGADO • DATOS REGISTRADOS
               </span>
               <span className="text-[11px] font-mono text-slate-400">{lead.id}</span>
             </div>
@@ -106,7 +105,7 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
               ¡Felicitaciones, {lead.name}!
             </h2>
             <p className="text-xs text-slate-300">
-              Tus datos han sido procesados y tu beneficio gremial está reservado.
+              Tu certificado está listo abajo. Envía tus resultados por WhatsApp para conversar con nuestro equipo y recibir tu <strong>beca o descuento según el puntaje obtenido</strong>.
             </p>
           </div>
         </div>
@@ -118,7 +117,7 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
             className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-black py-3 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm md:text-base cursor-pointer"
           >
             <MessageCircle className="w-5 h-5 fill-current" />
-            <span>Abrir WhatsApp Ahora</span>
+            <span>Enviar Resultado por WhatsApp</span>
             <ExternalLink className="w-4 h-4" />
           </button>
 
@@ -137,6 +136,26 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
         </div>
       </div>
 
+      {/* Official Certificate of Knowledge (Delivered immediately upon submitting data) */}
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <Award className="w-5 h-5 text-amber-400" />
+            <h3 className="text-lg font-black text-white">Tu Certificado Digital Oficial</h3>
+          </div>
+          <span className="text-xs text-slate-400">Firmado y verificable por ACBR Pastaza</span>
+        </div>
+
+        <DiplomaCard
+          userName={lead.name}
+          userCity={lead.city}
+          score={lead.score}
+          maxScore={lead.maxScore}
+          rank={lead.rank}
+          segment={lead.segment}
+        />
+      </div>
+
       {/* Main Options Grid: WhatsApp & Guide */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* WhatsApp Card */}
@@ -153,14 +172,14 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
             </div>
 
             <h3 className="text-base font-extrabold text-white mb-2">
-              Mensaje Listo para Enviar
+              Inicia la Conversación y Conoce tu Beca
             </h3>
             <p className="text-xs text-slate-300 leading-relaxed mb-3">
-              Al abrir WhatsApp, el mensaje con tu nombre, puntaje ({lead.score}/50) y perfil se enviará automáticamente al asesor de ACBR Pastaza.
+              Envía tu resultado ({lead.score}/{lead.maxScore} pts) directamente al WhatsApp de ACBR Pastaza. Nuestro equipo evaluará tu desempeño y te comunicará personalmente el porcentaje de beca o monto de descuento que te corresponde.
             </p>
 
             <div className="bg-[#060d1a] border border-slate-800 p-3 rounded-xl text-xs text-slate-400 font-mono line-clamp-3 mb-3">
-              ¡Hola ACBR Pastaza! Acabo de completar el Reto Inmobiliario... Nombre: {lead.name}, Ciudad: {lead.city}, Puntaje: {lead.score}/50 pts...
+              ¡Hola ACBR Pastaza! Acabo de completar el Reto Inmobiliario... Nombre: {lead.name}, Ciudad: {lead.city}, Resultado: {lead.score}/{lead.maxScore} pts...
             </div>
           </div>
 
@@ -193,7 +212,7 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
                 Material Normativo Gratuito
               </span>
               <span className="text-[11px] bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-bold">
-                PDF Desbloqueado
+                Guía Desbloqueada
               </span>
             </div>
 
@@ -248,27 +267,7 @@ Solicito mi diagnóstico oficial y la información del beneficio gremial (${conf
         </a>
       </div>
 
-      {/* Official Certificate of Knowledge */}
-      <div>
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <Award className="w-5 h-5 text-amber-400" />
-            <h3 className="text-lg font-black text-white">Tu Reconocimiento Oficial</h3>
-          </div>
-          <span className="text-xs text-slate-400">Verificable por ACBR Pastaza</span>
-        </div>
-
-        <DiplomaCard
-          userName={lead.name}
-          userCity={lead.city}
-          score={lead.score}
-          maxScore={lead.maxScore}
-          rank={lead.rank}
-          segment={lead.segment}
-        />
-      </div>
-
-      {/* AI Legal & Professional Real Estate Advisor (Gemini Thinking Mode) */}
+      {/* AI Legal & Professional Real Estate Advisor */}
       <AIAdvisor
         userScore={lead.score}
         userSegment={lead.segment}

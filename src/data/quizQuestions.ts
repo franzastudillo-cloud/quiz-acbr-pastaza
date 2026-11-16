@@ -3,68 +3,123 @@ import { QuizQuestion } from '../types';
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
-    q: '1. ¿En qué año se promulgó la Ley de Corredores de Bienes Raíces en el Ecuador que regula oficialmente nuestra profesión?',
+    q: '1. ¿Cuáles son dos maneras de tratar a un cliente "sabelotodo"?',
     options: [
-      { text: 'A) En 1984 (Decreto Legislativo sobre corretaje inmobiliario)', correct: true },
-      { text: 'B) En 2015 con el COGEP', correct: false },
-      { text: 'C) No existe una ley específica en Ecuador', correct: false },
+      { text: 'A) No perder la serenidad, no replicarle en tono alterado', correct: true },
+      { text: 'B) Analizar y superar rápidamente las objeciones', correct: false },
+      { text: 'C) Interesar en su opinión y elogiar sus comentarios', correct: false },
+      { text: 'D) Rebatir sus comentarios y no perder la serenidad', correct: false },
     ],
-    explanation: '¡Exacto! La Ley de Corredores de Bienes Raíces rige en Ecuador desde 1984 y respalda legalmente el ejercicio profesional.',
-    legalBasis: 'Ley de Corredores de Bienes Raíces, Registro Oficial N° 845 del 19 de septiembre de 1984.',
+    explanation:
+      'Con un cliente sabelotodo nunca debes entrar en confrontación directa ni responder en tono alterado. Mantener la serenidad desactiva la tensión y te permite conducir la negociación con profesionalismo.',
+    legalBasis: 'Técnicas de Ventas y Atención al Cliente Inmobiliario • Perfil Sabelotodo.',
   },
   {
     id: 2,
-    q: '2. Según la normativa ecuatoriana, ¿por qué es indispensable contar con la Licencia Profesional (CBR) para intermediar bienes raíces?',
+    q: '2. ¿De qué depende la interacción en redes sociales?',
     options: [
-      { text: 'A) Es solo un requisito opcional para cobrar más comisión', correct: false },
-      { text: 'B) Otorga respaldo legal para exigir honorarios, celebrar contratos de corretaje y brindar seguridad jurídica', correct: true },
-      { text: 'C) Solo sirve para trabajar en el sector público', correct: false },
+      { text: 'A) El nivel de conversación que tengas con tu público', correct: true },
+      { text: 'B) El nivel de inversión que le pongas a las pautas', correct: false },
+      { text: 'C) La cantidad de contenido que subas', correct: false },
     ],
-    explanation: '¡Así es! Ejercer con Licencia Profesional garantiza seguridad jurídica al cliente y protege legalmente el cobro de tus honorarios ante cualquier tribunal.',
-    legalBasis: 'Art. 3 y 4 de la Ley de Corredores: Solo quien ostente la licencia puede percibir corretaje legal y formalizar actos de mediación inmobiliaria.',
+    explanation:
+      'La verdadera interacción (engagement) no depende únicamente de publicar en volumen ni solo de pagar pauta, sino de la conversación bidireccional y la conexión real que generas con tu audiencia.',
+    legalBasis: 'Marketing Digital Inmobiliario • Gestión de Comunidades y Redes Sociales.',
   },
   {
     id: 3,
-    q: '3. ¿Cuál es el rol de la UAFE respecto a los Corredores de Bienes Raíces e Inmobiliarias en el Ecuador?',
+    q: '3. ¿Para la validez del contrato de arrendamiento donde el canon de arrendamiento a cancelar es de $400, qué requisito se debe cumplir para que sea válido?',
     options: [
-      { text: 'A) Fijar el precio de los terrenos y casas en cada municipio', correct: false },
-      { text: 'B) Supervisar a los corredores como Sujetos Obligados a reportar y prevenir el lavado de activos', correct: true },
-      { text: 'C) Cobrar impuestos prediales anuales', correct: false },
+      { text: 'A) Inscribir el Contrato en la Notaría', correct: true },
+      { text: 'B) Inscribir el Contrato en el Registro de la Propiedad', correct: false },
+      { text: 'C) Registrar el inmueble que se arrienda en el Municipio', correct: false },
     ],
-    explanation: '¡Correcto! El sector inmobiliario es Sujeto Obligado ante la UAFE; conocer la normativa evita multas severas y protege tu patrimonio y el de tus clientes.',
-    legalBasis: 'Ley Orgánica de Prevención, Detección y Erradicación del Delito de Lavado de Activos y del Financiamiento de Delitos (Resoluciones UAFE).',
+    explanation:
+      'De acuerdo con la Ley de Inquilinato del Ecuador (Art. 29), todo contrato cuyo canon supere un Salario Básico Unificado debe celebrarse por escrito e inscribirse obligatoriamente ante una Notaría dentro de los 30 días siguientes.',
+    legalBasis: 'Ley de Inquilinato del Ecuador, Art. 29 (Inscripción notarial de contratos de arrendamiento).',
   },
   {
     id: 4,
-    q: '4. ¿Qué ventaja competitiva ofrece el programa de formación de ACBR Pastaza para quienes desean obtener su Licencia Profesional en Ecuador?',
+    q: '4. ¿Cuál es el método más apropiado para la valoración del terreno?',
     options: [
-      { text: 'A) Modalidad 100% virtual accesible desde cualquier provincia del país con aval gremial oficial', correct: true },
-      { text: 'B) Solo permite estudiar de forma presencial en la Amazonía', correct: false },
-      { text: 'C) Dura 5 años como una carrera universitaria tradicional', correct: false },
+      { text: 'A) Método de Reposición', correct: false },
+      { text: 'B) Método Comparativo de Mercado', correct: true },
+      { text: 'C) Método Residual', correct: false },
+      { text: 'D) Cualquier inmueble que aparezca en los portales inmobiliarios.', correct: false },
     ],
-    explanation: '¡Brillante! ACBR Pastaza te permite formarte y certificarte 100% online desde cualquier rincón del Ecuador con docentes expertos y horarios flexibles.',
-    legalBasis: 'Convenio y estatutos gremiales de ACBR Pastaza para la capacitación y titulación de Corredores Profesionales.',
+    explanation:
+      'El terreno no puede reproducirse ni depreciarse por construcción; por ello, el Método Comparativo de Mercado (analizando transacciones y ofertas comparables de terrenos en la misma zona) es el método técnico más apropiado.',
+    legalBasis: 'Normativa Técnica de Avalúos y Valoración Inmobiliaria • Valoración de Suelo.',
   },
   {
     id: 5,
-    q: '5. Además del respaldo gremial oficial en Ecuador, ¿qué beneficio obtienen los miembros de ACBR Pastaza a nivel global?',
+    q: '5. ¿Si una persona fallece y tiene un inmueble que adquirió por donación, quién hereda el bien inmueble?',
     options: [
-      { text: 'A) Alianzas estratégicas internacionales (como NAR / redes globales) para expandir fronteras operativas', correct: true },
-      { text: 'B) Ninguno, la licencia solo sirve dentro de un barrio', correct: false },
-      { text: 'C) Descuentos únicamente en pasajes de autobús', correct: false },
+      { text: 'A) La cónyuge el 50% y los hijos el otro 50%', correct: false },
+      { text: 'B) La cónyuge recibe la totalidad', correct: false },
+      { text: 'C) Los hijos reciben la totalidad', correct: true },
     ],
-    explanation: '¡Excelente! Nuestras alianzas nacionales e internacionales conectan tu negocio inmobiliario con redes de alto nivel e inversionistas de todo el mundo.',
-    legalBasis: 'Alianzas internacionales de ACBR Pastaza con NAR (National Association of Realtors) y CILA (Confederación Inmobiliaria Latinoamericana).',
+    explanation:
+      'Los bienes adquiridos por donación son bienes propios y no ingresan a la sociedad conyugal (no generan 50% de gananciales para el cónyuge). Según el primer orden de sucesión intestada del Código Civil, los hijos excluyen a los demás herederos y reciben la totalidad (sin perjuicio de la porción conyugal si aplicara).',
+    legalBasis: 'Código Civil del Ecuador, Art. 158 (Bienes propios por donación) y Art. 1028 (Primer orden sucesorio).',
   },
   {
     id: 6,
-    q: '6. Para personalizar tu diagnóstico final: ¿Cuál es tu interés principal en el sector inmobiliario hoy?',
-    isSegmentation: true,
+    q: '6. ¿A qué se refiere la fase de awareness, dentro del embudo de marketing digital?',
     options: [
-      { text: '🎓 Quiero obtener mi Licencia Profesional de Corredor con ACBR Pastaza', tag: 'Aspirante al Curso / Licencia CBR' },
-      { text: '🤝 Ya ejerzo en bienes raíces y quiero agremiarme o actualizarme (UAFE, Avalúos, Legal)', tag: 'Corredor / Capacitación Continua' },
-      { text: '🏡 Busco comprar, vender o tomar en anticresis una propiedad con un corredor legal', tag: 'Cliente Propietario / Comprador' },
+      { text: 'A) La fase de mejor conexión digital con el prospecto', correct: false },
+      { text: 'B) El proceso de compra de un proyecto inmobiliario', correct: false },
+      { text: 'C) El conocimiento o reconocimiento de la gente en el entorno digital', correct: true },
     ],
-    explanation: '🎯 ¡Perfecto! Hemos ajustado tu resultado y el beneficio según tu perfil profesional.',
+    explanation:
+      'En el embudo de conversión (funnel), la fase de Awareness (notoriedad o reconocimiento) corresponde al primer contacto en el que el público descubre y reconoce tu marca inmobiliaria en el entorno digital.',
+    legalBasis: 'Estrategia Digital Inmobiliaria • Embudo de Conversión (Awareness / Consideración / Conversión).',
+  },
+  {
+    id: 7,
+    q: '7. ¿Cuáles son dos características que nos permiten distinguir al cliente curioso?',
+    options: [
+      { text: 'A) Es introvertido; y, prefiere mantenerse sin conversar con nadie', correct: false },
+      { text: 'B) Hace preguntas que sorprenden al vendedor; y, revisa, investiga y observa minuciosamente el inmueble', correct: true },
+      { text: 'C) Habla permanentemente, le gusta contar anécdotas.', correct: false },
+    ],
+    explanation:
+      'El cliente curioso indaga a profundidad: realiza preguntas inesperadas o técnicas y examina minuciosamente cada detalle físico y documental del inmueble.',
+    legalBasis: 'Psicología del Comprador Inmobiliario • Tipología de Clientes.',
+  },
+  {
+    id: 8,
+    q: '8. ¿Si vas a realizar un avalúo del inmueble a través del método comparativo de mercado, los comparables deben ser:',
+    options: [
+      { text: 'A) Inmuebles vendidos o en oferta en el mismo sector, con características físicas, ubicación y de uso diferentes al bien sujeto de avalúo.', correct: false },
+      { text: 'B) Inmuebles vendidos o en oferta en el mismo sector, con características físicas, ubicación y de uso semejantes al bien sujeto de avalúo', correct: true },
+    ],
+    explanation:
+      'Para que un avalúo comparativo sea técnicamente válido y objetivo, las muestras comparables deben pertenecer al mismo entorno o sector y guardar homogeneidad en características físicas, ubicación y uso.',
+    legalBasis: 'Estándares de Valuación Inmobiliaria • Principio de Sustitución y Homogeneización.',
+  },
+  {
+    id: 9,
+    q: '9. ¿Cuál es el documento que demuestra que una persona es el propietario actual de un inmueble?',
+    options: [
+      { text: 'A) La escritura pública de compraventa inscrita en el registro de la propiedad', correct: false },
+      { text: 'B) La certificación del Catastro Municipal.', correct: false },
+      { text: 'C) El certificado de gravámenes emitido por el Registro de la Propiedad', correct: true },
+    ],
+    explanation:
+      'Una escritura antigua pudo quedar sin efecto si el bien fue vendido posteriormente. En Ecuador, el Certificado de Gravámenes emitido por el Registro de la Propiedad acredita quién es el propietario actual vigente y si el bien posee hipotecas o prohibiciones.',
+    legalBasis: 'Ley de Registro del Ecuador • Certificación de Historial de Dominio y Gravámenes.',
+  },
+  {
+    id: 10,
+    q: '10. ¿Cuáles son dos características del cliente "Dominante"?',
+    options: [
+      { text: 'A) Busca siempre descuentos, cree ser hábil comprador', correct: false },
+      { text: 'B) Cree saber todo del inmueble, es detallista y hace críticas', correct: false },
+      { text: 'C) Vive permanentemente descontento, es de acciones rápidas', correct: true },
+    ],
+    explanation:
+      'El cliente dominante actúa con rapidez, exige agilidad en las respuestas, impone ritmo en la negociación y suele mostrarse inconforme o exigente si percibe demoras o falta de contundencia.',
+    legalBasis: 'Técnicas de Negociación Inmobiliaria • Manejo del Cliente Dominante.',
   },
 ];

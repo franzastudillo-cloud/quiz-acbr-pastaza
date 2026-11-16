@@ -3,14 +3,13 @@ import {
   GraduationCap,
   Sparkles,
   Send,
-  CheckCircle2,
   Lock,
   Phone,
   User,
   MapPin,
   Mail,
   Loader2,
-  Building,
+  Target,
 } from 'lucide-react';
 import { Lead, LeadAnswer, AppConfig } from '../types';
 import { Logo } from './Logo';
@@ -24,27 +23,35 @@ interface LeadCaptureScreenProps {
   onSubmitSuccess: (lead: Lead) => void;
 }
 
+const INTEREST_OPTIONS = [
+  '🎓 Quiero obtener mi Licencia Profesional de Corredor con ACBR Pastaza',
+  '🤝 Ya ejerzo en bienes raíces y quiero agremiarme o actualizarme',
+  '🏡 Busco comprar, vender o arrendar una propiedad con un corredor legal',
+];
+
 export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
   score,
   maxScore,
-  segment,
+  segment: initialSegment,
   answers,
-  config,
   onSubmitSuccess,
 }) => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [selectedInterest, setSelectedInterest] = useState(
+    initialSegment && initialSegment !== 'General' ? initialSegment : INTEREST_OPTIONS[0]
+  );
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const quickCities = ['Puyo', 'Quito', 'Ambato', 'Guayaquil', 'Cuenca', 'Riobamba', 'Tena', 'Macas'];
 
   const getRankTitle = (pts: number) => {
-    if (pts >= 50) return 'Corredor Inmobiliario de Élite';
-    if (pts >= 40) return 'Profesional Inmobiliario Senior';
-    if (pts >= 30) return 'Agente Inmobiliario Promesa';
+    if (pts >= 90) return 'Corredor Inmobiliario de Élite';
+    if (pts >= 70) return 'Profesional Inmobiliario Senior';
+    if (pts >= 50) return 'Agente Inmobiliario Promesa';
     return 'Iniciado en Bienes Raíces';
   };
 
@@ -56,7 +63,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
 
     const cleanName = name.trim();
     const cleanCity = city.trim();
-    let cleanPhone = phone.trim().replace(/\s+/g, '');
+    const cleanPhone = phone.trim().replace(/\s+/g, '');
 
     if (!cleanName || cleanName.length < 3) {
       setErrorMsg('Por favor ingresa tu Nombre y Apellido completo.');
@@ -76,7 +83,6 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
     setSubmitting(true);
 
     try {
-      // 1. Post to backend API to ensure lead is NEVER lost
       const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -87,7 +93,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
           email: email.trim() || undefined,
           score,
           maxScore,
-          segment,
+          segment: selectedInterest,
           answers,
           whatsappSent: true,
         }),
@@ -101,20 +107,17 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
       const data = await res.json();
       const createdLead: Lead = data.lead;
 
-      // 2. Also save to localStorage as local client cache
       try {
         const localSaved = JSON.parse(localStorage.getItem('acbr_leads') || '[]');
         localSaved.unshift(createdLead);
         localStorage.setItem('acbr_leads', JSON.stringify(localSaved));
-      } catch (e) {
+      } catch {
         // Ignore localStorage error
       }
 
-      // 3. Callback to parent to transition to result view with automated WhatsApp trigger
       onSubmitSuccess(createdLead);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Submission error:', err);
-      // Even if network error occurs, create local lead object so user is not blocked
       const fallbackLead: Lead = {
         id: `LEAD-LOCAL-${Date.now()}`,
         name: cleanName,
@@ -123,7 +126,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
         email: email.trim() || undefined,
         score,
         maxScore,
-        segment,
+        segment: selectedInterest,
         rank,
         status: 'nuevo',
         answers,
@@ -160,7 +163,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
         </div>
 
         <p className="text-slate-300 text-xs md:text-sm max-w-lg mx-auto mt-2 leading-relaxed">
-          Ingresa tus datos para registrar automáticamente tu resultado, desbloquear tu <strong>Certificado Digital de Conocimiento</strong> y reclamar en WhatsApp tu <strong>Guía de Profesionalización + Beca de ACBR Pastaza</strong>.
+          Completa tus datos para recibir de inmediato tu <strong>Certificado Digital Oficial</strong> y enviar tu resultado al WhatsApp de <strong>ACBR Pastaza</strong>, donde te comunicaremos la <strong>beca o monto de descuento asignado según los resultados obtenidos</strong>.
         </p>
       </div>
 
@@ -244,7 +247,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
                 />
               </div>
               <p className="text-[10px] text-slate-500 mt-1">
-                Te enviaremos a este WhatsApp tu confirmación oficial.
+                A este número te enviaremos tu evaluación de beca o descuento.
               </p>
             </div>
           </div>
@@ -253,7 +256,7 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
           <div>
             <label className="block text-xs text-slate-400 uppercase font-extrabold mb-1.5 flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Correo Electrónico (Opcional para recibir PDF)</span>
+              <span>Correo Electrónico (Opcional para respaldo)</span>
             </label>
             <input
               type="email"
@@ -264,12 +267,28 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
             />
           </div>
 
-          {/* Selected Interest Badge */}
-          <div className="pt-2 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-            <span>Interés registrado:</span>
-            <span className="font-bold text-sky-300 bg-sky-500/10 px-2.5 py-1 rounded-md border border-sky-500/20">
-              {segment}
-            </span>
+          {/* Interest Selector */}
+          <div>
+            <label className="block text-xs text-slate-400 uppercase font-extrabold mb-2 flex items-center gap-1.5">
+              <Target className="w-3.5 h-3.5 text-amber-400" />
+              <span>¿Cuál es tu interés principal hoy? *</span>
+            </label>
+            <div className="space-y-2">
+              {INTEREST_OPTIONS.map((option) => (
+                <button
+                  type="button"
+                  key={option}
+                  onClick={() => setSelectedInterest(option)}
+                  className={`w-full text-left p-3 rounded-xl border text-xs md:text-sm transition ${
+                    selectedInterest === option
+                      ? 'bg-sky-500/20 border-sky-400 text-white font-bold'
+                      : 'bg-[#0b192c] border-slate-700/80 text-slate-300 hover:border-slate-500'
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -282,12 +301,12 @@ export const LeadCaptureScreen: React.FC<LeadCaptureScreenProps> = ({
           {submitting ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              <span>Registrando y procesando tus datos...</span>
+              <span>Generando Certificado y enviando tus datos...</span>
             </>
           ) : (
             <>
               <Send className="w-5 h-5" />
-              <span>📲 Enviar mis Datos y Reclamar Beneficio en WhatsApp</span>
+              <span>🎓 Recibir Certificado y Enviar Resultado a WhatsApp</span>
             </>
           )}
         </button>

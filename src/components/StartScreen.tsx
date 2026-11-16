@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Award, Sparkles, Building2, BookCheck, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Award, Sparkles, Building2, BookCheck } from 'lucide-react';
 import { Logo } from './Logo';
 
 interface StartScreenProps {
@@ -11,7 +11,6 @@ interface StartScreenProps {
 export const StartScreen: React.FC<StartScreenProps> = ({
   onStart,
   onOpenGuide,
-  scholarshipText,
 }) => {
   return (
     <div className="py-2 animate-fade-in">
@@ -44,7 +43,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
       </h1>
 
       <p className="text-slate-300 text-base md:text-lg mb-6 leading-relaxed">
-        5 preguntas clave para demostrar cuánto sabes del mundo legal, normativo y comercial de los bienes raíces en Ecuador. Al finalizar, desbloquea tu <strong>diagnóstico oficial</strong>, tu <strong>Certificado Digital</strong> y el beneficio exclusivo de <strong>ACBR Pastaza • Tu Sede Inmobiliaria ({scholarshipText})</strong>.
+        10 preguntas clave sobre ventas, marketing digital, avalúos y normativa inmobiliaria en Ecuador. Al finalizar y enviar tus datos, recibirás tu <strong>Certificado Digital Oficial</strong> y podrás acceder a una <strong>beca o descuento especial según los resultados obtenidos</strong>, el cual te comunicaremos directamente por WhatsApp.
       </p>
 
       {/* Feature Highlights Grid */}
@@ -52,24 +51,24 @@ export const StartScreen: React.FC<StartScreenProps> = ({
         <div className="bg-[#060d1a]/80 border border-slate-800 p-3.5 rounded-xl flex items-start gap-2.5">
           <BookCheck className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
           <div className="text-left">
-            <h4 className="text-xs font-bold text-white">Leyes & UAFE</h4>
-            <p className="text-[11px] text-slate-400">Ley de 1984 y deberes ante la UAFE en Ecuador.</p>
+            <h4 className="text-xs font-bold text-white">Avalúos & Leyes</h4>
+            <p className="text-[11px] text-slate-400">Contratos, sucesiones, catastro y valoración inmobiliaria.</p>
           </div>
         </div>
 
         <div className="bg-[#060d1a]/80 border border-slate-800 p-3.5 rounded-xl flex items-start gap-2.5">
           <Building2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
           <div className="text-left">
-            <h4 className="text-xs font-bold text-white">100% Virtual</h4>
-            <p className="text-[11px] text-slate-400">Formación oficial accesible desde cualquier provincia.</p>
+            <h4 className="text-xs font-bold text-white">Ventas & Marketing</h4>
+            <p className="text-[11px] text-slate-400">Manejo de clientes y embudos digitales inmobiliarios.</p>
           </div>
         </div>
 
         <div className="bg-[#060d1a]/80 border border-slate-800 p-3.5 rounded-xl flex items-start gap-2.5">
           <Award className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
           <div className="text-left">
-            <h4 className="text-xs font-bold text-white">Licencia CBR</h4>
-            <p className="text-[11px] text-slate-400">Respaldo legal oficial y alianzas internacionales.</p>
+            <h4 className="text-xs font-bold text-white">Beca por Desempeño</h4>
+            <p className="text-[11px] text-slate-400">Obtén tu certificado y recibe tu beneficio según tu puntaje.</p>
           </div>
         </div>
       </div>
@@ -95,15 +94,15 @@ export const StartScreen: React.FC<StartScreenProps> = ({
       <div className="flex items-center gap-4 mt-6 text-xs text-slate-400">
         <span className="flex items-center gap-1">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-          5 preguntas interactivas
+          10 preguntas técnicas
         </span>
         <span className="flex items-center gap-1">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-          Toma menos de 2 minutos
+          Certificado inmediato al enviar
         </span>
         <span className="hidden sm:flex items-center gap-1">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-          Certificado inmediato
+          Beca asignada según tu puntaje
         </span>
       </div>
     </div>

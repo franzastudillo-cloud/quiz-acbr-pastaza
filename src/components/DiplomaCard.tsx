@@ -18,7 +18,6 @@ export const DiplomaCard: React.FC<DiplomaProps> = ({
   score,
   maxScore,
   rank,
-  segment,
   dateStr = new Date().toLocaleDateString('es-EC', {
     day: 'numeric',
     month: 'long',
@@ -60,7 +59,7 @@ export const DiplomaCard: React.FC<DiplomaProps> = ({
               Certificado de Conocimiento Inmobiliario
             </h3>
             <p className="text-xs text-slate-300 font-medium">
-              Ecuador • Ley de Corredores de Bienes Raíces de 1984
+              Ecuador • Evaluación de Ventas, Avalúos, Marketing y Normativa Legal
             </p>
           </div>
 
@@ -73,7 +72,7 @@ export const DiplomaCard: React.FC<DiplomaProps> = ({
           </h4>
 
           <p className="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed my-3">
-            Por haber completado con éxito el <strong>Reto de Conocimientos Normativos y Comerciales del Sector Inmobiliario del Ecuador</strong>, demostrando un alto dominio en la legislación vigente, prevención UAFE y ética en el corretaje.
+            Por haber completado con éxito el <strong>Reto de Conocimientos Técnicos, Comerciales y Jurídicos del Sector Inmobiliario del Ecuador</strong>, demostrando su nivel de preparación profesional ante la ACBR Pastaza.
           </p>
 
           {/* Stats Bar */}
@@ -92,22 +91,30 @@ export const DiplomaCard: React.FC<DiplomaProps> = ({
             </div>
           </div>
 
-          {/* Signatures & Seal */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800 text-xs">
-            <div className="text-left">
-              <div className="h-7 border-b border-slate-600 w-36 mb-1" />
+          {/* Official Signature & Seal */}
+          <div className="flex flex-wrap items-end justify-between gap-4 pt-5 border-t border-slate-800 text-xs">
+            <div className="text-center mx-auto sm:mx-0">
+              <div className="bg-white rounded-lg px-3 py-1.5 shadow-md inline-block mb-1.5 border border-slate-200">
+                <img
+                  src="/assets/aistudio/image_dbbd4ca7.png"
+                  alt="Firma María Fernanda Astudillo"
+                  className="h-14 md:h-16 w-auto object-contain mx-auto"
+                />
+              </div>
               <p className="font-bold text-slate-200">ACBR Pastaza</p>
               <p className="text-[10px] text-slate-400">Tu Sede INMOBILIARIA</p>
               <p className="text-[9px] text-sky-400 font-mono mt-0.5">acbirpastaza.com</p>
             </div>
-            <div className="flex flex-col items-center gap-1">
+
+            <div className="flex flex-col items-center gap-1 mx-auto sm:mx-0 pb-2">
               <div className="flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-300 text-[11px] font-bold">
                 <Award className="w-5 h-5 text-amber-400" />
                 <span>ACBR-VERIFIED 2026</span>
               </div>
               <span className="text-[9px] text-slate-400 font-mono">Registro oficial ACBR Pastaza</span>
             </div>
-            <div className="text-right">
+
+            <div className="text-center sm:text-right mx-auto sm:mx-0 pb-2">
               <p className="text-[10px] text-slate-400">Fecha de Emisión:</p>
               <p className="font-semibold text-slate-300">{dateStr}</p>
               <p className="text-[9px] text-slate-400 font-mono">Puyo • Ecuador</p>
@@ -123,7 +130,7 @@ export const DiplomaCard: React.FC<DiplomaProps> = ({
           className="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 hover:text-white px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 transition"
         >
           <Printer className="w-4 h-4 text-sky-400" />
-          <span>Imprimir / Guardar en PDF</span>
+          <span>Imprimir / Guardar Certificado en PDF</span>
         </button>
       </div>
     </div>

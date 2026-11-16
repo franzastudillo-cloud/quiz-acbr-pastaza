@@ -128,7 +128,7 @@ export const AdminCRM: React.FC<AdminCRMProps> = ({
       targetNumber = '593' + targetNumber;
     }
 
-    const message = `¡Hola ${lead.name}! 🏠 Te saludamos de *ACBR Pastaza*. Felicitaciones por completar nuestro Reto Inmobiliario con un puntaje de *${lead.score}/${lead.maxScore} pts* (${lead.rank}). Vimos que tu interés principal es *${lead.segment}*. ¿En qué horario podemos brindarte los detalles del beneficio exclusivo y resolver tus dudas?`;
+    const message = `¡Hola ${lead.name}! 🏠 Te saludamos de *ACBR Pastaza*. Felicitaciones por completar nuestro Reto Inmobiliario con un resultado de *${lead.score}/${lead.maxScore} pts* (${lead.rank}). De acuerdo con tu puntaje obtenido, queremos comunicarte el porcentaje de beca o descuento asignado para ti. ¿En qué horario conversamos?`;
 
     window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -259,7 +259,7 @@ export const AdminCRM: React.FC<AdminCRMProps> = ({
           </div>
           <div>
             <span className="text-xs text-slate-400 font-medium block">Puntaje Promedio</span>
-            <span className="text-xl font-black text-indigo-300">{avgScore} / 50 pts</span>
+            <span className="text-xl font-black text-indigo-300">{avgScore} / 100 pts</span>
           </div>
         </div>
       </div>
@@ -365,9 +365,9 @@ export const AdminCRM: React.FC<AdminCRMProps> = ({
                     <td className="py-3.5 px-4 whitespace-nowrap">
                       <span
                         className={`font-black px-2 py-0.5 rounded text-xs ${
-                          lead.score >= 40
+                          lead.score >= 80
                             ? 'bg-emerald-500/20 text-emerald-400'
-                            : lead.score >= 30
+                            : lead.score >= 50
                             ? 'bg-sky-500/20 text-sky-400'
                             : 'bg-amber-500/20 text-amber-400'
                         }`}
@@ -462,7 +462,7 @@ export const AdminCRM: React.FC<AdminCRMProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-slate-400 uppercase mb-1">
-                  Beneficio / Descuento Ofrecido
+                  Mensaje de Beca / Beneficio (según resultados)
                 </label>
                 <input
                   type="text"
